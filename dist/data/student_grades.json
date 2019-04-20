@@ -1,0 +1,35 @@
+{
+    "success": true,
+    "studentGrades": [
+        {
+            "name": "Jaytrin",
+            "grade": 99,
+            "course": "Math 101",
+            "id": 1
+        },
+        {
+            "name": "Steve",
+            "grade": 90,
+            "course": "English 101",
+            "id": 2
+        },
+        {
+            "name":"Rebecca",
+            "grade": 95,
+            "course": "Science 101",
+            "id": 3
+        },
+        {
+            "name":"Anthony",
+            "grade": 93,
+            "course": "History 101",
+            "id": 4
+        },
+        {
+            "name":"Scott",
+            "grade": 95,
+            "course": "PE",
+            "id": 5
+        }
+    ]
+}
