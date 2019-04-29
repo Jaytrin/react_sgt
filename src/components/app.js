@@ -1,36 +1,71 @@
 import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min'
 import '../assets/css/app.scss';
-import React from 'react';
-import AddStudents from './addStudents';
+import React, {Component} from 'react';
+import {Route} from 'react-router-dom'
+import axios from 'axios';
+import AddStudent from './addStudents';
 import Table from './table';
-import {Route, Link} from 'react-router-dom';
 
 
 //install react router dom
-//setup routing
+//setup routings
 //create two class components
 // Add students & Table
 //Table to be displayed on the home route /
 //AddStudents to be displayed on /add-student
+let tempId = 100;
 
-const App = () => (
-    <div className='container centered'>
-        <div>
-            <h1>Student Grade Table</h1>
-        </div>
+class App extends Component{
 
-        <ul>
-            <li>
-                <Link to='/'>Home</Link>
-            </li>
-            <li>
-                <Link to='/add-student'>Add Student</Link>
-            </li>
-        </ul>
+    constructor(props){
+        super(props);
 
-        <Route exact path='/' component={Table} />
-        <Route path='/add-student' component={AddStudents} />
-    </div>
-);
+        this.state = {
+            studentGrades: null
+        }
+
+        this.addStudent = this.addStudent.bind(this);
+    }
+
+    addStudent(student){
+        console.log('addStudent ran');
+        student.id = tempId++;
+
+        student.grade = parseFloat(student.grade);
+
+        this.setState({
+            studentGrades: [...this.state.studentGrades, student]
+        })
+    }
+
+    componentDidMount(){
+        this.getStudents();
+    }
+
+    getStudents(){
+        axios.get('/data/student_grades.json').then( resp => {
+            this.setState({
+                studentGrades: resp.data.studentGrades
+            })
+        })
+    }
+
+
+
+    render(){
+        return(
+            <div className='container centered'>
+                <Route exact path='/' render={(routingProps)=> {
+                    return <Table {...routingProps} studentGrades={this.state.studentGrades} />}
+                } />
+
+                <Route path='/add-student' render={(routingProps)=>{
+                    return <AddStudent {...routingProps} add={this.addStudent} />
+                }} />
+            </div>
+        )
+    }
+}
 
 export default App;
