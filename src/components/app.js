@@ -29,7 +29,6 @@ class App extends Component{
     }
 
     addStudent(student){
-        console.log('addStudent ran');
         student.id = tempId++;
 
         student.grade = parseFloat(student.grade);

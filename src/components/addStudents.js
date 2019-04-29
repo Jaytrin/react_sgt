@@ -21,7 +21,6 @@ class AddStudent extends Component{
     handleAddStudent = (event) => {
         event.preventDefault();
         this.props.add({...this.state});
-        console.log('adding:', this.state);
         //Below will redirect home to see if the list got addded.
         this.props.history.push('/');
     }
