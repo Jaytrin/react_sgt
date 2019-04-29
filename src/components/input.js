@@ -1,27 +1,3 @@
-//Original
-// import React from 'react';
-// import PropTypes from 'prop-types';
-
-// const Input = ({name, handleChange, type, labelName}) => {
-
-//         return(
-//                 <div className="input-field col s12">
-//                     <input id={type} type="text" name={type} value={name} onChange={handleChange} autoComplete="Off"/>
-//                     <label htmlFor={type}>{labelName}</label>
-//                 </div>
-//         )
-// }
-
-// Input.propTypes = {
-//     name: PropTypes.string.isRequired
-// }
-
-// Input.defaultProps = {
-//     name: ''
-// }
-
-// export default Input;
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
