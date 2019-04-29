@@ -4,6 +4,10 @@ import NavLink from './nav_link';
 
 class Table extends Component {
 
+    goToDetails(id){
+        this.props.history.push(`/student-details/${id}`)
+    }
+
     renderTable(){
         const { studentGrades } = this.props;
 
@@ -16,11 +20,11 @@ class Table extends Component {
         }
 
         const rowElements = studentGrades.map(student => {
-            return <StudentRow key={student.id} {...student}/>;
+            return <StudentRow key={student.id} history ={this.props.history} {...student} seeDetails={()=> this.goToDetails(student.id)}/>;
         });
 
         return (
-            <table>
+            <table className="student-table">
                 <thead>
                     <tr>
                         <th>ID</th>

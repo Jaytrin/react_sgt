@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const StudentRow = props => {
+    const to = `/student-details/${props.id}`;
+
+
     return (
-    <tr>
+    <tr className="student-row" onClick={props.seeDetails}>
         <td>{props.id}</td>
         <td>{props.name}</td>
         <td>{props.course}</td>

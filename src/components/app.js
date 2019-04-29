@@ -6,6 +6,7 @@ import {Route} from 'react-router-dom'
 import axios from 'axios';
 import AddStudent from './addStudents';
 import Table from './table';
+import StudentDetails from './student_details';
 
 
 //install react router dom
@@ -62,6 +63,8 @@ class App extends Component{
                 <Route path='/add-student' render={(routingProps)=>{
                     return <AddStudent {...routingProps} add={this.addStudent} />
                 }} />
+
+                <Route path="/student-details/:id" component={StudentDetails} />
             </div>
         )
     }
